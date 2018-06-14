@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -30,6 +33,8 @@ public class Main2Activity extends AppCompatActivity {
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
     private SliderAdapter sliderAdapter;
+    NavigationView navigationView;
+    android.support.v4.app.FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +62,22 @@ public class Main2Activity extends AppCompatActivity {
         //Find list view and bind it with the custom adapter
         ListView listView = (ListView) findViewById(R.id.customListView);
         listView.setAdapter(adapter);
+        navigationView=(NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.navtasks:
+                        Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
+                        break;
 
+                }
+
+
+                return false;
+            }
+        });
 
         //add event listener so we can handle clicks
         AdapterView.OnItemClickListener adapterViewListener = new AdapterView.OnItemClickListener() {
@@ -81,8 +101,8 @@ public class Main2Activity extends AppCompatActivity {
         listView.setOnItemClickListener(adapterViewListener);
 
 
-
-
+        //fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        //fragmentTransaction.add(R.id.)
 
 
     }
@@ -96,20 +116,21 @@ public class Main2Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-   /* @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+    /*public void onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
 
-            case R.id.nav_maths: {
-                //do somthing
+            case R.id.navworkpanel: {
+                Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
                 break;
             }
         }
         //close navigation drawer
-        mDrawerLayout.closeDrawer(GravityCompat.START);
-        return true;
+        mdrawerlayout.closeDrawer(GravityCompat.START);
+
     }*/
+
 
     //custom ArrayAdapater
     class propertyArrayAdapter extends ArrayAdapter<Property>{
