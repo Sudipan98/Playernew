@@ -4,7 +4,7 @@ package com.example.sudip.player;
 public class Property {
 
     //property basics
-    private int taskID;
+    private long  taskID;
     private String TaskName;
     private String GoalID;
     private String People;
@@ -18,7 +18,7 @@ public class Property {
 
     //constructor
     public Property(
-            int taskID, String TaskName, String GoalID, String People,
+            long taskID, String TaskName, String GoalID, String People,
             String description, String image, int points, int timeleft, int completion, Boolean featured){
 
         this.taskID = taskID;
@@ -35,7 +35,7 @@ public class Property {
     }
 
     //getters
-    public int getTaskID() { return taskID; }
+    public long getTaskID() { return taskID; }
     public String getTaskName() {return TaskName; }
     public String getGoalID() {return GoalID; }
     public String getPeople() {return People; }
